@@ -1,23 +1,40 @@
 <section class="gift-banner">
   <div class="container">
-    {% if section.settings.tagline != blank %}
-      <p class="gift-tagline">{{ section.settings.tagline }}</p>
+    <!-- Logo / Brand -->
+    {% if section.settings.logo_text != blank %}
+      <div class="gift-logo">{{ section.settings.logo_text }}</div>
     {% endif %}
 
-    {% if section.settings.title != blank %}
-      <h2 class="gift-title">{{ section.settings.title }}</h2>
-    {% endif %}
+    <!-- Top tagline + Button -->
+    <div class="gift-topbar">
+      {% if section.settings.top_tagline != blank %}
+        <p class="gift-top-tagline">{{ section.settings.top_tagline }}</p>
+      {% endif %}
+      {% if section.settings.top_button_text != blank and section.settings.top_button_link != blank %}
+        <a href="{{ section.settings.top_button_link }}" class="gift-top-btn">
+          {{ section.settings.top_button_text }}
+        </a>
+      {% endif %}
+    </div>
 
-    {% if section.settings.description != blank %}
-      <p class="gift-description">{{ section.settings.description }}</p>
-    {% endif %}
+    <!-- Main content -->
+    <div class="gift-content">
+      {% if section.settings.main_title != blank %}
+        <h2 class="gift-title">{{ section.settings.main_title }}</h2>
+      {% endif %}
 
-    {% if section.settings.button_link != blank and section.settings.button_text != blank %}
-      <a href="{{ section.settings.button_link }}" class="gift-btn">
-        {{ section.settings.button_text }}
-      </a>
-    {% endif %}
+      {% if section.settings.main_description != blank %}
+        <p class="gift-description">{{ section.settings.main_description }}</p>
+      {% endif %}
 
+      {% if section.settings.cta_text != blank and section.settings.cta_link != blank %}
+        <a href="{{ section.settings.cta_link }}" class="gift-cta-btn">
+          {{ section.settings.cta_text }}
+        </a>
+      {% endif %}
+    </div>
+
+    <!-- Footer tagline -->
     {% if section.settings.footer_text != blank %}
       <p class="gift-footer">{{ section.settings.footer_text }}</p>
     {% endif %}
@@ -28,12 +45,17 @@
 {
   "name": "Gift Banner",
   "settings": [
-    { "type": "text", "id": "tagline", "label": "Tagline" },
-    { "type": "text", "id": "title", "label": "Title" },
-    { "type": "textarea", "id": "description", "label": "Description" },
-    { "type": "text", "id": "button_text", "label": "Button text" },
-    { "type": "url", "id": "button_link", "label": "Button link" },
-    { "type": "text", "id": "footer_text", "label": "Footer text" }
+    { "type": "text", "id": "logo_text", "label": "Logo / Brand", "default": "TISSO VISON" },
+    { "type": "text", "id": "top_tagline", "label": "Top Tagline", "default": "Find the ideal gift for your loved ones." },
+    { "type": "text", "id": "top_button_text", "label": "Top Button Text", "default": "CHOOSE GIFT" },
+    { "type": "url", "id": "top_button_link", "label": "Top Button Link" },
+
+    { "type": "text", "id": "main_title", "label": "Main Title", "default": "The Gift Guide" },
+    { "type": "textarea", "id": "main_description", "label": "Main Description", "default": "Discover joy: Your ultimate holiday gift destination. Explore curated selection and find the perfect gifts to delight your loved ones this holiday season." },
+    { "type": "text", "id": "cta_text", "label": "CTA Button Text", "default": "SHOP NOW →" },
+    { "type": "url", "id": "cta_link", "label": "CTA Button Link" },
+
+    { "type": "text", "id": "footer_text", "label": "Footer Tagline", "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL" }
   ],
   "presets": [
     {
