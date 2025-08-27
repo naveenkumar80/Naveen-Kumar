@@ -3596,73 +3596,54 @@ details-disclosure > details {
   }
 }
 #mywork
-.featured-products {
-  padding: 60px 20px;
+.gift-banner {
   text-align: center;
+  padding: 3rem 1rem;
 }
 
-.fp-title {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-.fp-subtitle {
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 30px;
-}
-
-.fp-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-}
-
-.fp-item {
-  border: 1px solid #eee;
-  padding: 20px;
-  transition: transform 0.3s ease;
-  background: #fff;
-  border-radius: 8px;
-}
-
-.fp-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
-}
-
-.fp-product-title {
-  margin: 10px 0;
-  font-size: 1.1rem;
-}
-
-.fp-price {
+.gift-logo {
   font-weight: bold;
+  font-size: 1.2rem;
   margin-bottom: 10px;
 }
 
-.fp-btn {
-  display: inline-block;
-  padding: 10px 18px;
-  background: black;
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: all 0.3s ease;
+.gift-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.fp-btn:hover {
-  background: #ff5252;
+.gift-top-btn {
+  background: #fdd835;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.gift-top-btn:hover {
+  background: #ffca28;
   transform: scale(1.05);
 }
-.gift-btn {
-  background: black;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 4px;
+
+.gift-title {
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+.gift-cta-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.7rem 1.5rem;
+  border: 1px solid black;
+  text-decoration: none;
   transition: all 0.3s ease;
 }
-.gift-btn:hover {
-  background: #ff5252;
-  transform: scale(1.05);
+.gift-cta-btn:hover {
+  background: black;
+  color: white;
+}
+
+.gift-footer {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
 }
