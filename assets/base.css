@@ -3655,3 +3655,14 @@ details-disclosure > details {
   background: #ff5252;
   transform: scale(1.05);
 }
+.gift-btn {
+  background: black;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+.gift-btn:hover {
+  background: #ff5252;
+  transform: scale(1.05);
+}
