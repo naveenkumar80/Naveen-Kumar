@@ -1,14 +1,26 @@
 <section class="gift-banner">
   <div class="container">
-    <p class="gift-tagline">{{ section.settings.tagline }}</p>
-    <h2 class="gift-title">{{ section.settings.title }}</h2>
-    <p class="gift-description">{{ section.settings.description }}</p>
-    
-    <a href="{{ section.settings.button_link }}" class="gift-btn">
-      {{ section.settings.button_text }}
-    </a>
+    {% if section.settings.tagline != blank %}
+      <p class="gift-tagline">{{ section.settings.tagline }}</p>
+    {% endif %}
 
-    <p class="gift-footer">{{ section.settings.footer_text }}</p>
+    {% if section.settings.title != blank %}
+      <h2 class="gift-title">{{ section.settings.title }}</h2>
+    {% endif %}
+
+    {% if section.settings.description != blank %}
+      <p class="gift-description">{{ section.settings.description }}</p>
+    {% endif %}
+
+    {% if section.settings.button_link != blank and section.settings.button_text != blank %}
+      <a href="{{ section.settings.button_link }}" class="gift-btn">
+        {{ section.settings.button_text }}
+      </a>
+    {% endif %}
+
+    {% if section.settings.footer_text != blank %}
+      <p class="gift-footer">{{ section.settings.footer_text }}</p>
+    {% endif %}
   </div>
 </section>
 
@@ -22,6 +34,11 @@
     { "type": "text", "id": "button_text", "label": "Button text" },
     { "type": "url", "id": "button_link", "label": "Button link" },
     { "type": "text", "id": "footer_text", "label": "Footer text" }
+  ],
+  "presets": [
+    {
+      "name": "Gift Banner"
+    }
   ]
 }
 {% endschema %}
