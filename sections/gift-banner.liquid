@@ -1,27 +1,32 @@
-<section class="gift-banner">
+<section class="featured-products">
   <div class="container">
-    <p class="gift-tagline">{{ section.settings.tagline }}</p>
-    <h2 class="gift-title">{{ section.settings.title }}</h2>
-    <p class="gift-description">{{ section.settings.description }}</p>
-    
-    <a href="{{ section.settings.button_link }}" class="gift-btn">
-      {{ section.settings.button_text }}
-    </a>
+    <h2 class="fp-title">{{ section.settings.title }}</h2>
+    <p class="fp-subtitle">{{ section.settings.subtitle }}</p>
 
-    <p class="gift-footer">{{ section.settings.footer_text }}</p>
+    <div class="fp-grid">
+      {% for product in collections[section.settings.collection].products limit: section.settings.product_limit %}
+        <div class="fp-item">
+          <a href="{{ product.url }}">
+            <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+            <h3 class="fp-product-title">{{ product.title }}</h3>
+            <p class="fp-price">{{ product.price | money }}</p>
+          </a>
+          <a href="{{ product.url }}" class="fp-btn">{{ section.settings.button_text }}</a>
+        </div>
+      {% endfor %}
+    </div>
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "Gift Banner",
+  "name": "Featured Products Grid",
   "settings": [
-    { "type": "text", "id": "tagline", "label": "Tagline" },
-    { "type": "text", "id": "title", "label": "Title" },
-    { "type": "textarea", "id": "description", "label": "Description" },
-    { "type": "text", "id": "button_text", "label": "Button text" },
-    { "type": "url", "id": "button_link", "label": "Button link" },
-    { "type": "text", "id": "footer_text", "label": "Footer text" }
+    { "type": "text", "id": "title", "label": "Section Title", "default": "Featured Products" },
+    { "type": "textarea", "id": "subtitle", "label": "Subtitle", "default": "Check out our best picks" },
+    { "type": "collection", "id": "collection", "label": "Select Collection" },
+    { "type": "range", "id": "product_limit", "label": "Number of Products", "min": 2, "max": 12, "step": 1, "default": 4 },
+    { "type": "text", "id": "button_text", "label": "Button Text", "default": "View Product" }
   ]
 }
 {% endschema %}
