@@ -3595,15 +3595,63 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+#mywork
+.featured-products {
+  padding: 60px 20px;
+  text-align: center;
+}
 
-.gift-btn {
+.fp-title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.fp-subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.fp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.fp-item {
+  border: 1px solid #eee;
+  padding: 20px;
+  transition: transform 0.3s ease;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.fp-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+}
+
+.fp-product-title {
+  margin: 10px 0;
+  font-size: 1.1rem;
+}
+
+.fp-price {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.fp-btn {
+  display: inline-block;
+  padding: 10px 18px;
   background: black;
   color: white;
-  padding: 12px 24px;
+  text-decoration: none;
   border-radius: 4px;
   transition: all 0.3s ease;
 }
-.gift-btn:hover {
+
+.fp-btn:hover {
   background: #ff5252;
   transform: scale(1.05);
 }
