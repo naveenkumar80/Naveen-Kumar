@@ -1,0 +1,27 @@
+<section class="gift-banner">
+  <div class="container">
+    <p class="gift-tagline">{{ section.settings.tagline }}</p>
+    <h2 class="gift-title">{{ section.settings.title }}</h2>
+    <p class="gift-description">{{ section.settings.description }}</p>
+    
+    <a href="{{ section.settings.button_link }}" class="gift-btn">
+      {{ section.settings.button_text }}
+    </a>
+
+    <p class="gift-footer">{{ section.settings.footer_text }}</p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gift Banner",
+  "settings": [
+    { "type": "text", "id": "tagline", "label": "Tagline" },
+    { "type": "text", "id": "title", "label": "Title" },
+    { "type": "textarea", "id": "description", "label": "Description" },
+    { "type": "text", "id": "button_text", "label": "Button text" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "text", "id": "footer_text", "label": "Footer text" }
+  ]
+}
+{% endschema %}
