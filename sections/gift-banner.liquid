@@ -3,6 +3,11 @@
   "name": "Gift Banner",
   "settings": [
     {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
       "type": "text",
       "id": "subtitle",
       "label": "Subtitle",
@@ -46,57 +51,70 @@
 }
 {% endschema %}
 
-<div class="gift-banner">
-  <div class="gift-banner__content">
-    {% if section.settings.subtitle != blank %}
-      <p class="gift-subtitle">{{ section.settings.subtitle }}</p>
-    {% endif %}
-
-    {% if section.settings.title != blank %}
-      <h2 class="gift-title">{{ section.settings.title }}</h2>
-    {% endif %}
-
-    {% if section.settings.description != blank %}
-      <p class="gift-description">{{ section.settings.description }}</p>
-    {% endif %}
-
-    <div class="gift-buttons">
-      {% if section.settings.primary_button_label != blank %}
-        <a href="{{ section.settings.primary_button_link }}" class="gift-btn primary-btn">
-          {{ section.settings.primary_button_label }}
-        </a>
+<div class="gift-banner" 
+     style="background-image: url('{{ section.settings.background_image | image_url: width: 2000 }}');">
+  <div class="gift-banner__overlay">
+    <div class="gift-banner__content">
+      {% if section.settings.subtitle != blank %}
+        <p class="gift-subtitle">{{ section.settings.subtitle }}</p>
       {% endif %}
 
-      {% if section.settings.secondary_button_label != blank %}
-        <a href="{{ section.settings.secondary_button_link }}" class="gift-btn secondary-btn">
-          {{ section.settings.secondary_button_label }}
-        </a>
+      {% if section.settings.title != blank %}
+        <h2 class="gift-title">{{ section.settings.title }}</h2>
       {% endif %}
+
+      {% if section.settings.description != blank %}
+        <p class="gift-description">{{ section.settings.description }}</p>
+      {% endif %}
+
+      <div class="gift-buttons">
+        {% if section.settings.primary_button_label != blank %}
+          <a href="{{ section.settings.primary_button_link }}" class="gift-btn primary-btn">
+            {{ section.settings.primary_button_label }}
+          </a>
+        {% endif %}
+
+        {% if section.settings.secondary_button_label != blank %}
+          <a href="{{ section.settings.secondary_button_link }}" class="gift-btn secondary-btn">
+            {{ section.settings.secondary_button_label }}
+          </a>
+        {% endif %}
+      </div>
     </div>
   </div>
 </div>
 
 <style>
 .gift-banner {
+  position: relative;
+  background-size: cover;
+  background-position: center;
   text-align: center;
+  padding: 100px 20px;
+  color: #fff;
+}
+
+.gift-banner__overlay {
+  background: rgba(0, 0, 0, 0.4); /* dark overlay */
   padding: 60px 20px;
 }
 
 .gift-subtitle {
   font-size: 16px;
-  color: #666;
+  color: #FFD600; /* Yellow accent */
   margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .gift-title {
-  font-size: 32px;
+  font-size: 42px;
   font-weight: bold;
   margin-bottom: 15px;
 }
 
 .gift-description {
   font-size: 18px;
-  color: #444;
   margin-bottom: 25px;
 }
 
