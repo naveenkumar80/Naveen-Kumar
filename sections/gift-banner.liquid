@@ -1,65 +1,97 @@
-<section class="gift-banner">
-  <div class="container">
-    <!-- Logo / Brand -->
-    {% if section.settings.logo_text != blank %}
-      <div class="gift-logo">{{ section.settings.logo_text }}</div>
-    {% endif %}
-
-    <!-- Top tagline + Button -->
-    <div class="gift-topbar">
-      {% if section.settings.top_tagline != blank %}
-        <p class="gift-top-tagline">{{ section.settings.top_tagline }}</p>
+<div class="gift-banner">
+  <div class="gift-banner__content">
+    <p class="gift-subtitle">{{ section.settings.subtitle }}</p>
+    <h2 class="gift-title">{{ section.settings.title }}</h2>
+    <p class="gift-description">{{ section.settings.description }}</p>
+    
+    <div class="gift-buttons">
+      {% if section.settings.primary_button_label != blank %}
+        <a href="{{ section.settings.primary_button_link }}" class="gift-btn primary-btn">
+          {{ section.settings.primary_button_label }}
+        </a>
       {% endif %}
-      {% if section.settings.top_button_text != blank and section.settings.top_button_link != blank %}
-        <a href="{{ section.settings.top_button_link }}" class="gift-top-btn">
-          {{ section.settings.top_button_text }}
+      
+      {% if section.settings.secondary_button_label != blank %}
+        <a href="{{ section.settings.secondary_button_link }}" class="gift-btn secondary-btn">
+          {{ section.settings.secondary_button_label }}
         </a>
       {% endif %}
     </div>
-
-    <!-- Main content -->
-    <div class="gift-content">
-      {% if section.settings.main_title != blank %}
-        <h2 class="gift-title">{{ section.settings.main_title }}</h2>
-      {% endif %}
-
-      {% if section.settings.main_description != blank %}
-        <p class="gift-description">{{ section.settings.main_description }}</p>
-      {% endif %}
-
-      {% if section.settings.cta_text != blank and section.settings.cta_link != blank %}
-        <a href="{{ section.settings.cta_link }}" class="gift-cta-btn">
-          {{ section.settings.cta_text }}
-        </a>
-      {% endif %}
-    </div>
-
-    <!-- Footer tagline -->
-    {% if section.settings.footer_text != blank %}
-      <p class="gift-footer">{{ section.settings.footer_text }}</p>
-    {% endif %}
   </div>
-</section>
+</div>
+
+<style>
+.gift-btn {
+  display: inline-block;
+  padding: 12px 22px;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.primary-btn {
+  background: #FFD600; /* yellow like in your screenshot */
+  color: #000;
+}
+
+.primary-btn:hover {
+  transform: scale(1.05);
+}
+
+.secondary-btn {
+  background: #000;
+  color: #fff;
+  margin-left: 12px;
+}
+
+.secondary-btn:hover {
+  transform: scale(1.05);
+}
+</style>
 
 {% schema %}
 {
   "name": "Gift Banner",
   "settings": [
-    { "type": "text", "id": "logo_text", "label": "Logo / Brand", "default": "TISSO VISON" },
-    { "type": "text", "id": "top_tagline", "label": "Top Tagline", "default": "Find the ideal gift for your loved ones." },
-    { "type": "text", "id": "top_button_text", "label": "Top Button Text", "default": "CHOOSE GIFT" },
-    { "type": "url", "id": "top_button_link", "label": "Top Button Link" },
-
-    { "type": "text", "id": "main_title", "label": "Main Title", "default": "The Gift Guide" },
-    { "type": "textarea", "id": "main_description", "label": "Main Description", "default": "Discover joy: Your ultimate holiday gift destination. Explore curated selection and find the perfect gifts to delight your loved ones this holiday season." },
-    { "type": "text", "id": "cta_text", "label": "CTA Button Text", "default": "SHOP NOW →" },
-    { "type": "url", "id": "cta_link", "label": "CTA Button Link" },
-
-    { "type": "text", "id": "footer_text", "label": "Footer Tagline", "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL" }
-  ],
-  "presets": [
     {
-      "name": "Gift Banner"
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Find the ideal gift for your loved ones."
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "The Gift Guide"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Discover joy: Your ultimate holiday gift destination. Explore curated selection and find the perfect gifts to delight your loved ones this holiday season."
+    },
+    {
+      "type": "text",
+      "id": "primary_button_label",
+      "label": "Primary Button Label",
+      "default": "CHOOSE GIFT"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_label",
+      "label": "Secondary Button Label",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_link",
+      "label": "Secondary Button Link"
     }
   ]
 }
